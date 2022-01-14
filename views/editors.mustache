@@ -1,0 +1,49 @@
+{{>header}}
+
+{{>navigation}}
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>Editors</h2>
+      <p>Only editors should be able to view this page! Test</p>
+      <p><strong>{{ message }}</strong></p>
+      <table>
+        <tr>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Level</th>
+          <th>Delete</th>
+        </tr>
+        {{#users}}
+            <tr>
+              <td>{{ username }}</td>
+              <td>{{ password }}</td>
+              <td>{{ level }}</td>
+              <td><form action="/editors/deleteUser" method="post"><input type="hidden" name="deletedUser" value="{{ username }}"><input type="submit" value="Delete"></form></td>
+            </tr>
+        {{/users}}
+      </table>
+      <br/>
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Delete</th>
+        </tr>
+        {{#articles}}
+            <tr>
+              <td>{{ title }}</td>
+              <td>{{ username }}</td>
+              <td><form action="/editors/deleteArticle" method="post"><input type="hidden" name="deletedArticle" value="{{ title }}"><input type="submit" value="Delete"></form></td>
+            </tr>
+        {{/articles}}
+      </table>
+    </div>
+  </div>
+
+  {{>sidebar}}
+
+</div>
+
+{{>footer}}
